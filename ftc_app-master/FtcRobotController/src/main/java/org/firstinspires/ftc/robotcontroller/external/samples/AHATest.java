@@ -30,7 +30,6 @@ public class AHATest extends OpMode {
         } else {
             leftMotor.setPower(0);
         }
-
         if(gamepad1.left_bumper) {
             leftMotor.setPower(10);
         } else if(gamepad1.left_stick_button){
