@@ -37,7 +37,7 @@ public class Auto8485 extends LinearOpMode {
         backLeft.setPower(1);
         backRight.setPower(1);
         time.reset();
-        while(opModeIsActive() && time.seconds() < 10) {
+        while(opModeIsActive() && time.seconds() < 4) {
             idle();
         }
 
