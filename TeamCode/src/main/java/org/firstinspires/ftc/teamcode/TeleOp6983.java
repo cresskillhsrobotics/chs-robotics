@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Created by Jacob Gorman
  */
 
-@TeleOp(name="StandardTeleOp", group="6983")
+@TeleOp(name="Teleop6983", group="6983")
 public class TeleOp6983 extends OpMode {
 
     DcMotor fl;

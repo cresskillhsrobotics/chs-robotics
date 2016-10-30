@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by harry on 2016-10-30.
  */
 
-@Autonomous(name="StandardAuto", group="8485")
+@Autonomous(name="Auto8485", group="8485")
 public class Auto8485 extends LinearOpMode {
 
     DcMotor frontLeft;

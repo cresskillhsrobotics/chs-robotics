@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
  * Created by harry on 2016-10-29.
  */
 
-@TeleOp(name="StandardTeleOp", group="8485")
+@TeleOp(name="TeleOp8485", group="8485")
 public class TeleOp8485 extends OpMode {
 
     DcMotor frontLeft;
