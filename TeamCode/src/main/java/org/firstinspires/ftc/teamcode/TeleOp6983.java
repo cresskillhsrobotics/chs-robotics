@@ -61,12 +61,16 @@ public class TeleOp6983 extends OpMode {
             fl.setPower((-gamepad1.left_stick_y - gamepad1.left_stick_x)/2);
             br.setPower((-gamepad1.left_stick_y - gamepad1.left_stick_x)/2);
             bl.setPower((gamepad1.left_stick_y - gamepad1.left_stick_x)/2);
-        }
-        if(gamepad1.right_stick_x > 0.25 || gamepad1.right_stick_x < -0.25) {
-            fr.setPower((-gamepad1.right_stick_x)/2);
-            fl.setPower((-gamepad1.right_stick_x)/2);
-            br.setPower((gamepad1.right_stick_x)/2);
-            bl.setPower((gamepad1.right_stick_x)/2);
+        } else if(gamepad1.right_stick_y > 0.25 || gamepad1.right_stick_y < -0.25) {
+            fr.setPower((gamepad1.right_stick_y)/2);
+            fl.setPower(-(gamepad1.right_stick_y)/2);
+            br.setPower((gamepad1.right_stick_y)/2);
+            bl.setPower(-(gamepad1.right_stick_y)/2);
+        } else {
+            fr.setPower(0);
+            fl.setPower(0);
+            br.setPower(0);
+            bl.setPower(0);
         }
 
         if (gamepad2.x)
