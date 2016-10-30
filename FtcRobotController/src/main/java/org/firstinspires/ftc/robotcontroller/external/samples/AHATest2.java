@@ -20,11 +20,15 @@ public class AHATest2 extends OpMode {
 
     @Override
     public void loop() {
-        motor.setPower(50);
-        TimeUnit.SECONDS.sleep(3);
-        motor.setPower(-50);
-        TimeUnit.SECONDS.sleep(3);
-        motor.setPower(0);
-        TimeUnit.SECONDS.sleep(3);
+        try {
+            motor.setPower(50);
+            TimeUnit.SECONDS.sleep(3);
+            motor.setPower(-50);
+            TimeUnit.SECONDS.sleep(3);
+            motor.setPower(0);
+            TimeUnit.SECONDS.sleep(3);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 }
