@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 /**
  * Created by Jacob Gorman
@@ -48,7 +49,7 @@ public class TeleOp6983 extends OpMode {
         m1.setPower(0);
         m2.setPower(0);
 
-        s1.setPosition();
+        s1.setPosition(0);
         s2.setPosition(0);
     }
 
@@ -69,7 +70,7 @@ public class TeleOp6983 extends OpMode {
         }
 
         if (gamepad2.x)
-            s1Position += S1_SPEED
+            s1Position += S1_SPEED;
         else if (gamepad2.y)
             s1Position -= S1_SPEED;
 
@@ -78,7 +79,7 @@ public class TeleOp6983 extends OpMode {
         else if (gamepad2.b)
             s2Position -= S2_SPEED;
 
-        if(gamepad1.right_bumber) {
+        if(gamepad1.right_bumper) {
             m1.setPower(0.5);
         } else if(gamepad1.left_bumper) {
             m1.setPower(-0.5);
@@ -86,7 +87,7 @@ public class TeleOp6983 extends OpMode {
             m1.setPower(0);
         }
 
-        if(gamepad2.right_bumber) {
+        if(gamepad2.right_bumper) {
             m2.setPower(0.5);
         } else if(gamepad2.left_bumper) {
             m2.setPower(-0.5);
