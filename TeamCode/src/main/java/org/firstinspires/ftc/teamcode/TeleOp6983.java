@@ -101,8 +101,5 @@ public class TeleOp6983 extends OpMode {
 
         s1.setPosition(s1Position);
         s2.setPosition(s2Position);
-
-
-
     }
 }
