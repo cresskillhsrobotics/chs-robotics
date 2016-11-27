@@ -12,7 +12,6 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name="Auto8485", group="8485")
 public class Auto8485 extends LinearOpMode {
-
     DcMotor frontLeft;
     DcMotor frontRight;
     DcMotor backLeft;
@@ -30,8 +29,7 @@ public class Auto8485 extends LinearOpMode {
         backRight.setDirection(DcMotor.Direction.REVERSE);
 
         waitForStart();
-
-        //drive forwards for 10 seconds
+        //drive forwards for 4 seconds
         frontLeft.setPower(1);
         frontRight.setPower(1);
         backLeft.setPower(1);
