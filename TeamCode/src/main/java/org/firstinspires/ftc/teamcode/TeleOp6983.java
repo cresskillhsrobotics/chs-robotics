@@ -23,6 +23,9 @@ public class TeleOp6983 extends OpMode {
     DcMotor conveyor;
     DcMotor zipTie;
 
+    Servo s1;
+    Servo s2;
+
     @Override
     public void init() {
         frontLeft = hardwareMap.dcMotor.get("front_left");
@@ -36,6 +39,9 @@ public class TeleOp6983 extends OpMode {
         rightLauncher = hardwareMap.dcMotor.get("launch_right");
         leftLauncher = hardwareMap.dcMotor.get("launch_left");
 
+        s1 = hardwareMap.servo.get("s1");
+        s2 = hardwareMap.servo.get("s2");
+
         leftLauncher.setDirection(DcMotor.Direction.REVERSE);
 
         frontLeft.setPower(0);
@@ -48,6 +54,9 @@ public class TeleOp6983 extends OpMode {
 
         zipTie.setPower(0);
         conveyor.setPower(0);
+
+        s1.setPosition(0);
+        s2.setPosition(0);
     }
 
     @Override
@@ -94,5 +103,31 @@ public class TeleOp6983 extends OpMode {
         } else {
             conveyor.setPower(0);
         }
+        if(gamepad2.a) {
+            s1.setPosition(180);
+        } else if(gamepad2.b) {
+            s1.setPosition(0);
+        }
+        if(gamepad2.x) {
+            s2.setPosition(180);
+        } else if(gamepad2.y) {
+            s2.setPosition(0);
+        }
+        /*if(gamepad1.right_bumper) {
+            frontRight.setPower(0.5);
+            backLeft.setPower(0.5);
+            frontLeft.setPower(-0.5);
+            backRight.setPower(-0.5);
+        }else if(gamepad1.left_bumper) {
+            frontRight.setPower(-0.5);
+            backLeft.setPower(-0.5);
+            frontLeft.setPower(0.5);
+            backRight.setPower(0.5);
+        } else {
+            frontRight.setPower(0);
+            backLeft.setPower(0);
+            frontLeft.setPower(0);
+            backRight.setPower(0);
+        }*/
     }
 }

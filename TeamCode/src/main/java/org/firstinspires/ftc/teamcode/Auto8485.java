@@ -29,13 +29,20 @@ public class Auto8485 extends LinearOpMode {
         backRight.setDirection(DcMotor.Direction.REVERSE);
 
         waitForStart();
-        //drive forwards for 4 seconds
+
+        //wait for 9 seconds
+        time.reset();
+        while(opModeIsActive() && time.seconds() < 9) {
+            idle();
+        }
+
+        //drive forwards for 5.5 seconds
         frontLeft.setPower(1);
         frontRight.setPower(1);
         backLeft.setPower(1);
         backRight.setPower(1);
         time.reset();
-        while(opModeIsActive() && time.seconds() < 4) {
+        while(opModeIsActive() && time.seconds() < 5.5) {
             idle();
         }
 
