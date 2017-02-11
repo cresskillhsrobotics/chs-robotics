@@ -17,117 +17,48 @@ public class TeleOp6983 extends OpMode {
     DcMotor backLeft;
     DcMotor backRight;
 
-    DcMotor rightLauncher;
-    DcMotor leftLauncher;
-
-    DcMotor conveyor;
-    DcMotor zipTie;
-
-    Servo s1;
-    Servo s2;
-
     @Override
     public void init() {
-        frontLeft = hardwareMap.dcMotor.get("front_left");
-        frontRight = hardwareMap.dcMotor.get("front_right");
-        backLeft = hardwareMap.dcMotor.get("back_left");
-        backRight = hardwareMap.dcMotor.get("back_right");
+        frontLeft = hardwareMap.dcMotor.get("front_l");
+        frontRight = hardwareMap.dcMotor.get("front_r");
+        backLeft = hardwareMap.dcMotor.get("back_l");
+        backRight = hardwareMap.dcMotor.get("back_r");
 
-        zipTie = hardwareMap.dcMotor.get("zip");
-        conveyor = hardwareMap.dcMotor.get("conveyor");
-
-        rightLauncher = hardwareMap.dcMotor.get("launch_right");
-        leftLauncher = hardwareMap.dcMotor.get("launch_left");
-
-        s1 = hardwareMap.servo.get("s1");
-        s2 = hardwareMap.servo.get("s2");
-
-        leftLauncher.setDirection(DcMotor.Direction.REVERSE);
-
-        frontLeft.setPower(0);
-        frontRight.setPower(0);
-        backLeft.setPower(0);
-        backRight.setPower(0);
-
-        rightLauncher.setPower(0);
-        leftLauncher.setPower(0);
-
-        zipTie.setPower(0);
-        conveyor.setPower(0);
-
-        s1.setPosition(0);
-        s2.setPosition(0);
+        frontLeft.setDirection(DcMotor.Direction.REVERSE);
+        backLeft.setDirection(DcMotor.Direction.REVERSE);
     }
 
     @Override
     public void loop() {
-        //TO SLOW DOWN INCREASE THE "2" to "3" In the next 8 statements etc (decimals work *e.g. 2.5)
+        double leftVert = -gamepad1.left_stick_y;
+        double leftHorz = gamepad1.left_stick_x;
+        double rightVert = -gamepad1.right_stick_y;
+        double rightHorz = gamepad1.right_stick_x;
 
-        if(gamepad1.left_stick_y > 0.25 || gamepad1.left_stick_x > 0.25 || gamepad1.left_stick_y < -0.25 || gamepad1.left_stick_x < -0.25) {
-            frontRight.setPower((gamepad1.left_stick_y - gamepad1.left_stick_x)/2);
-            frontLeft.setPower((-gamepad1.left_stick_y - gamepad1.left_stick_x)/2);
-            backRight.setPower((-gamepad1.left_stick_y - gamepad1.left_stick_x)/2);
-            backLeft.setPower((gamepad1.left_stick_y - gamepad1.left_stick_x)/2);
-        } else if(gamepad1.right_stick_y > 0.25 || gamepad1.right_stick_y < -0.25) {
-            frontRight.setPower((gamepad1.right_stick_y)/2);
-            frontLeft.setPower(-(gamepad1.right_stick_y)/2);
-            backRight.setPower((gamepad1.right_stick_y)/2);
-            backLeft.setPower(-(gamepad1.right_stick_y)/2);
-        } else {
-            frontRight.setPower(0);
+        if(Math.abs(leftVert) > Math.abs(leftHorz)) {
+            //drive forwards/backwards for left wheels
+            frontLeft.setPower(leftVert);
+            backLeft.setPower(leftVert);
+        } else if(Math.abs(leftHorz) > Math.abs(leftVert)) {
+            //drive left/right for left wheels
+            frontLeft.setPower(leftHorz);
+            backLeft.setPower(-leftHorz);
+        } else if(leftHorz == 0 && leftVert == 0) {
             frontLeft.setPower(0);
-            backRight.setPower(0);
             backLeft.setPower(0);
         }
-        if(gamepad1.right_trigger > 0.5) {
-            rightLauncher.setPower(1);
-            leftLauncher.setPower(1);
-        } else if(gamepad1.left_trigger > 0.5) {
-            rightLauncher.setPower(-1);
-            leftLauncher.setPower(-1);
-        } else {
-            rightLauncher.setPower(0);
-            leftLauncher.setPower(0);
-        }
-        if (gamepad1.a) {
-            zipTie.setPower(1);
-        } else if(gamepad1.b) {
-            zipTie.setPower(-1);
-        } else {
-            zipTie.setPower(0);
-        }
-        if (gamepad1.x) {
-            conveyor.setPower(1);
-        } else if(gamepad1.y) {
-            conveyor.setPower(-1);
-        } else {
-            conveyor.setPower(0);
-        }
-        if(gamepad2.a) {
-            s1.setPosition(180);
-        } else if(gamepad2.b) {
-            s1.setPosition(0);
-        }
-        if(gamepad2.x) {
-            s2.setPosition(180);
-        } else if(gamepad2.y) {
-            s2.setPosition(0);
-        }
-        /*if(gamepad1.right_bumper) {
-            frontRight.setPower(0.5);
-            backLeft.setPower(0.5);
-            frontLeft.setPower(-0.5);
-            backRight.setPower(-0.5);
-        }else if(gamepad1.left_bumper) {
-            frontRight.setPower(-0.5);
-            backLeft.setPower(-0.5);
-            frontLeft.setPower(0.5);
-            backRight.setPower(0.5);
-        } else {
+
+        if(Math.abs(rightVert) > Math.abs(rightHorz)) {
+            //drive forwards/backwards for right wheels
+            frontRight.setPower(rightVert);
+            backRight.setPower(rightVert);
+        } else if(Math.abs(rightHorz) > Math.abs(rightVert)) {
+            //drive left/right for right wheels
+            frontRight.setPower(-rightHorz);
+            backRight.setPower(rightHorz);
+        } else if(rightHorz == 0 && rightVert == 0) {
             frontRight.setPower(0);
-            backLeft.setPower(0);
-            frontLeft.setPower(0);
             backRight.setPower(0);
-        }*/
+        }
     }
 }

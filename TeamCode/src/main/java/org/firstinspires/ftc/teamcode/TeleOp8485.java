@@ -34,15 +34,10 @@ public class TeleOp8485 extends OpMode {
 
         catapult = hardwareMap.dcMotor.get("ctpult");
 
-        frontRight.setDirection(DcMotor.Direction.REVERSE);
-        backRight.setDirection(DcMotor.Direction.REVERSE);
+        frontLeft.setDirection(DcMotor.Direction.REVERSE);
+        backLeft.setDirection(DcMotor.Direction.REVERSE);
 
         shooterLeft.setDirection(DcMotor.Direction.REVERSE);
-
-        frontLeft.setPower(0);
-        frontRight.setPower(0);
-        backLeft.setPower(0);
-        backRight.setPower(0);
     }
 
     @Override
@@ -71,8 +66,8 @@ public class TeleOp8485 extends OpMode {
             backRight.setPower(rightVert);
         } else if(Math.abs(rightHorz) > Math.abs(rightVert)) {
             //drive left/right for right wheels
-            frontRight.setPower(rightHorz);
-            backRight.setPower(-rightHorz);
+            frontRight.setPower(-rightHorz);
+            backRight.setPower(rightHorz);
         } else if(rightHorz == 0 && rightVert == 0) {
             frontRight.setPower(0);
             backRight.setPower(0);
@@ -90,9 +85,9 @@ public class TeleOp8485 extends OpMode {
         }
 
         if(gamepad1.right_bumper) {
-            catapult.setPower(0.25);
+            catapult.setPower(0.50);
         } else if(gamepad1.right_trigger != 0) {
-            catapult.setPower(-0.25);
+            catapult.setPower(-1.00);
         } else {
             catapult.setPower(0);
         }
