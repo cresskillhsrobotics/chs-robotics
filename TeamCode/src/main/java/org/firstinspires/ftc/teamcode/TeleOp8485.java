@@ -20,7 +20,7 @@ public class TeleOp8485 extends OpMode {
     DcMotor shooterLeft;
     DcMotor shooterRight;
 
-    DcMotor catapult;
+    DcMotor belt;
 
     @Override
     public void init() {
@@ -29,10 +29,10 @@ public class TeleOp8485 extends OpMode {
         backLeft = hardwareMap.dcMotor.get("back_l");
         backRight = hardwareMap.dcMotor.get("back_r");
 
-        shooterLeft = hardwareMap.dcMotor.get("shooter_left");
-        shooterRight = hardwareMap.dcMotor.get("shooter_right");
+        shooterLeft = hardwareMap.dcMotor.get("shooter_l");
+        shooterRight = hardwareMap.dcMotor.get("shooter_r");
 
-        catapult = hardwareMap.dcMotor.get("ctpult");
+        belt = hardwareMap.dcMotor.get("belt");
 
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
         backLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -74,23 +74,19 @@ public class TeleOp8485 extends OpMode {
         }
 
         if(gamepad1.a) {
-            shooterLeft.setPower(-.5);
-            shooterRight.setPower(.5);
+            shooterLeft.setPower(-.6);//AUDREY CHANGE THESE THINGS NO
+            shooterRight.setPower(-.6);//THIS ONE TOO
+            belt.setPower(1);
         } else if(gamepad1.b) {
-            shooterLeft.setPower(.5);
-            shooterRight.setPower(-.5);
+            shooterLeft.setPower(1);
+            shooterRight.setPower(1);
+            belt.setPower(-1);
         } else {
             shooterLeft.setPower(0);
             shooterRight.setPower(0);
+            belt.setPower(0);
         }
 
-        if(gamepad1.right_bumper) {
-            catapult.setPower(0.50);
-        } else if(gamepad1.right_trigger != 0) {
-            catapult.setPower(-1.00);
-        } else {
-            catapult.setPower(0);
-        }
 
     }
 }
