@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.hardware.Servo;
 
 /**
  * Created by harry on 2016-10-30.
@@ -24,6 +25,9 @@ public class Auto8485 extends LinearOpMode {
 
     DcMotor shooterLeft;
     DcMotor shooterRight;
+
+    Servo leftServo;
+    Servo rightServo;
 
     ColorSensor colorSensor;
 
@@ -42,7 +46,10 @@ public class Auto8485 extends LinearOpMode {
 
         colorSensor = hardwareMap.colorSensor.get("clr");
 
-        boolean LEDState = false;
+        rightServo = hardwareMap.servo.get("srv_1");
+        leftServo = hardwareMap.servo.get("srv_2");
+
+        colorSensor.enableLed(false);
 
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
         backLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -96,18 +103,16 @@ public class Auto8485 extends LinearOpMode {
         backLeft.setPower(0.0);
         backRight.setPower(0.0);
 
-        colorSensor.enableLed(LEDState);
-        float hsvValue[] = {0, 0, 0};
-        while(time.seconds() < 10) {
-            Color.RGBToHSV(colorSensor.red() * 8, colorSensor.green() * 8, colorSensor.blue() * 8, hsvValue);
-            telemetry.addData("2 Clear", colorSensor.alpha());
-            telemetry.addData("3 Red", colorSensor.red());
-            telemetry.addData("4 Green", colorSensor.green());
-            telemetry.addData("5 Blue", colorSensor.blue());
-            telemetry.addData("6 Hue", hsvValue[0]);
+        //wait for a second
+        while(time.seconds() < 10) {}
+
+        //do color sensor/beacon pushing
+        if(colorSensor.red() > 1) {
+            //red light
+            rightServo.setPosition(1);
+        } else if(colorSensor.blue() > 1) {
+            //blue light
+            leftServo.setPosition(1);
         }
-
-        while(time.seconds() < 20) {}
-
     }
 }
