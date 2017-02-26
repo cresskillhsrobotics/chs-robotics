@@ -46,8 +46,8 @@ public class Auto8485 extends LinearOpMode {
 
         colorSensor = hardwareMap.colorSensor.get("clr");
 
-        rightServo = hardwareMap.servo.get("srv_1");
-        leftServo = hardwareMap.servo.get("srv_2");
+        rightServo = hardwareMap.servo.get("srv_2");
+        leftServo = hardwareMap.servo.get("srv_1");
 
         colorSensor.enableLed(false);
 
@@ -120,7 +120,7 @@ public class Auto8485 extends LinearOpMode {
     }
 
     public void moveServo(Servo sv) {
-        for(int i = 0; i < 100; i++) {
+        for(int i = 0; i < 200; i++) {
             sv.setPosition(sv.getPosition()+0.01);
             try {
                 Thread.sleep(10);
