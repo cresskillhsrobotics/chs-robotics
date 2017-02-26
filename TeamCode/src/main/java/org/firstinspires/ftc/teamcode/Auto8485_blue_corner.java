@@ -13,8 +13,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by harry on 2016-10-30.
  */
 
-@Autonomous(name="Auto8485_Beacon", group="8485")
-public class Auto8485 extends LinearOpMode {
+@Autonomous(name="Auto8485_blue_corner", group="8485")
+public class Auto8485_blue_corner extends LinearOpMode {
     DcMotor frontLeft;
     DcMotor frontRight;
     DcMotor backLeft;
@@ -51,63 +51,44 @@ public class Auto8485 extends LinearOpMode {
 
         time.reset();
 
-        shooterLeft.setPower(.6);
-        shooterRight.setPower(-.6);
+        shooterLeft.setPower(.45);
+        shooterRight.setPower(-.45);
         belt.setPower(1);
 
-        while(time.seconds() < 4) {}//4 seconds - shoots
+        while(time.seconds() < 4) {}//1.5 seconds - shoots
 
         shooterLeft.setPower(0);
         shooterRight.setPower(0);
         belt.setPower(0);
 
+        frontLeft.setPower(-.7);
+        frontRight.setPower(0);
+        backLeft.setPower(-.7);
+        backRight.setPower(0);
+
+        while(time.seconds() < 4.2) {} //.6 seconds - only left
 
         frontLeft.setPower(-.7);
-        frontRight.setPower(-.7);
+        frontRight.setPower(-.4);
         backLeft.setPower(-.7);
-        backRight.setPower(-.7);
+        backRight.setPower(-.4);
 
-        while(time.seconds() < 6) {}// 2 seconds - move backwards
-
-        frontLeft.setPower(.7);
-        frontRight.setPower(-.7);
-        backLeft.setPower(.7);
-        backRight.setPower(-.7);
-
-        while(time.seconds() < 6.35) {} // .35 seconds turn right
-
-        frontLeft.setPower(-.5);
-        frontRight.setPower(-.5);
-        backLeft.setPower(-.5);
-        backRight.setPower(-.5);
-
-        while(time.seconds() < 8.2) {} // 1.95 seconds move backward
+        while(time.seconds() < 6.1) {}// 2 seconds - move backwards
 
         frontLeft.setPower(-.7);
         frontRight.setPower(.7);
         backLeft.setPower(-.7);
         backRight.setPower(.7);
 
-        while(time.seconds() < 9) {} // .8  seconds turn left
-        //robot is in line for beacon now
+        while(time.seconds() < 6.7) {} // .4 seconds turn right
 
-        frontLeft.setPower(0.0);
-        frontRight.setPower(0.0);
-        backLeft.setPower(0.0);
-        backRight.setPower(0.0);
 
-        colorSensor.enableLed(LEDState);
-        float hsvValue[] = {0, 0, 0};
-        while(time.seconds() < 10) {
-            Color.RGBToHSV(colorSensor.red() * 8, colorSensor.green() * 8, colorSensor.blue() * 8, hsvValue);
-            telemetry.addData("2 Clear", colorSensor.alpha());
-            telemetry.addData("3 Red", colorSensor.red());
-            telemetry.addData("4 Green", colorSensor.green());
-            telemetry.addData("5 Blue", colorSensor.blue());
-            telemetry.addData("6 Hue", hsvValue[0]);
-        }
+        frontLeft.setPower(-.5);
+        frontRight.setPower(-.5);
+        backLeft.setPower(-.5);
+        backRight.setPower(-.5);
 
-        while(time.seconds() < 20) {}
+        while(time.seconds() < 8.8) {} // 1.9 seconds move backward
 
     }
 }
