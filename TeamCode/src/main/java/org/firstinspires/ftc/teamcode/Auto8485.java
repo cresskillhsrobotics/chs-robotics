@@ -128,5 +128,14 @@ public class Auto8485 extends LinearOpMode {
                 e.printStackTrace();
             }
         }
+
+        for(int i = 0; i < 200; i++) {
+            sv.setPosition(sv.getPosition()-0.01);
+            try {
+                Thread.sleep(10);
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
