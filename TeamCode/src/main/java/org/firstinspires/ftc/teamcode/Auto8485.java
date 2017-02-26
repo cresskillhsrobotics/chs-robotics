@@ -54,6 +54,9 @@ public class Auto8485 extends LinearOpMode {
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
         backLeft.setDirection(DcMotor.Direction.REVERSE);
 
+        rightServo.setPosition(0);
+        leftServo.setPosition(0);
+
         waitForStart();
 
         time.reset();
