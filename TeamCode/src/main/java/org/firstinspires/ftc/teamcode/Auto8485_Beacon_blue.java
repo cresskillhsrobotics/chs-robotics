@@ -78,12 +78,12 @@ public class Auto8485_Beacon_blue extends LinearOpMode {
 
         while(time.seconds() < 6) {}// 2 seconds - move backwards
 
-        frontLeft.setPower(.7);
-        frontRight.setPower(-.7);
-        backLeft.setPower(.7);
-        backRight.setPower(-.7);
+        frontLeft.setPower(-.7);
+        frontRight.setPower(.7);
+        backLeft.setPower(-.7);
+        backRight.setPower(.7);
 
-        while(time.seconds() < 6.35) {} // .35 seconds turn right
+        while(time.seconds() < 6.35) {} // .35 seconds turn left
 
         frontLeft.setPower(-.5);
         frontRight.setPower(-.5);
@@ -92,12 +92,12 @@ public class Auto8485_Beacon_blue extends LinearOpMode {
 
         while(time.seconds() < 8.2) {} // 1.95 seconds move backward
 
-        frontLeft.setPower(-.7);
-        frontRight.setPower(.7);
-        backLeft.setPower(-.7);
-        backRight.setPower(.7);
+        frontLeft.setPower(.7);
+        frontRight.setPower(-.7);
+        backLeft.setPower(.7);
+        backRight.setPower(-.7);
 
-        while(time.seconds() < 9) {} // .8  seconds turn left
+        while(time.seconds() < 9) {} // .8  seconds turn right
         //robot is in line for beacon now
 
         frontLeft.setPower(0.0);
@@ -111,10 +111,10 @@ public class Auto8485_Beacon_blue extends LinearOpMode {
         //do color sensor/beacon pushing
         if(colorSensor.red() > colorSensor.blue()) {
             //red light
-            moveServo(leftServo);
+            moveServo(rightServo);
         } else if(colorSensor.red() > 2) {
             //blue light
-            moveServo(rightServo);
+            moveServo(leftServo);
         }
 
         telemetry.addData("red", colorSensor.red());
