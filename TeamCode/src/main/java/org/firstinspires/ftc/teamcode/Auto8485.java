@@ -68,7 +68,6 @@ public class Auto8485 extends LinearOpMode {
         shooterRight.setPower(0);
         belt.setPower(0);
 
-
         frontLeft.setPower(-.7);
         frontRight.setPower(-.7);
         backLeft.setPower(-.7);
@@ -109,10 +108,22 @@ public class Auto8485 extends LinearOpMode {
         //do color sensor/beacon pushing
         if(colorSensor.red() > 1) {
             //red light
-            rightServo.setPosition(1);
+            moveServo(rightServo);
         } else if(colorSensor.blue() > 1) {
             //blue light
-            leftServo.setPosition(1);
+            moveServo(leftServo);
+        }
+
+    }
+
+    public void moveServo(Servo sv) {
+        for(int i = 0; i < 100; i++) {
+            sv.setPosition(sv.getPosition()+0.01);
+            try {
+                Thread.sleep(50);
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }
