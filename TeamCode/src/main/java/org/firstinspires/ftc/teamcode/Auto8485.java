@@ -120,7 +120,7 @@ public class Auto8485 extends LinearOpMode {
         for(int i = 0; i < 100; i++) {
             sv.setPosition(sv.getPosition()+0.01);
             try {
-                Thread.sleep(50);
+                Thread.sleep(10);
             } catch(Exception e) {
                 e.printStackTrace();
             }
