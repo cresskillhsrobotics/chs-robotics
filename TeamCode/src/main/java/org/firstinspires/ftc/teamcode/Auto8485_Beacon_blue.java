@@ -14,8 +14,8 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Created by harry on 2016-10-30.
  */
 
-@Autonomous(name="Auto8485_Beacon_Red", group="8485")
-public class Auto8485 extends LinearOpMode {
+@Autonomous(name="Auto8485_Beacon_blue", group="8485")
+public class Auto8485_Beacon_blue extends LinearOpMode {
     DcMotor frontLeft;
     DcMotor frontRight;
     DcMotor backLeft;
@@ -46,7 +46,7 @@ public class Auto8485 extends LinearOpMode {
 
         colorSensor = hardwareMap.colorSensor.get("clr");
 
-        rightServo = hardwareMap.servo.get("srv_1");
+        rightServo = hardwareMap.servo.get("srv_2");
         leftServo = hardwareMap.servo.get("srv_1");
 
         colorSensor.enableLed(false);
