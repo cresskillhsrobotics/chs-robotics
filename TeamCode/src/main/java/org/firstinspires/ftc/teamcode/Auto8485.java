@@ -111,10 +111,10 @@ public class Auto8485 extends LinearOpMode {
         //do color sensor/beacon pushing
         if(colorSensor.red() > 1) {
             //red light
-            moveServo(rightServo);
+            moveServo(leftServo);
         } else if(colorSensor.blue() > 1) {
             //blue light
-            moveServo(leftServo);
+            moveServo(rightServo);
         }
 
     }
